@@ -14,8 +14,15 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 
+interface RecycleItem {
+  id: string;
+  name: string;
+  type: string;
+  isPhp?: boolean;
+}
+
 // 1. Bin content
-const RECYCLE_BIN_DATA = [
+const RECYCLE_BIN_DATA: RecycleItem[] = [
   { id: 'rb-1', name: 'old-index.php', type: 'file', isPhp: true },
   { id: 'rb-2', name: 'wp-config-backup.php', type: 'file', isPhp: true },
   { id: 'rb-3', name: 'legacy-wordpress-site', type: 'folder' },

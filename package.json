@@ -1,5 +1,5 @@
 {
-  "name": "next_blank",
+  "name": "jokic_dev",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -23,6 +23,9 @@
     "react-dom": "19.2.3",
     "tailwind": "^4.0.0",
     "tailwind-merge": "^3.4.0"
+  },
+   "engines": {
+    "node": "20.x"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
