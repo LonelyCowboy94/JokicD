@@ -32,7 +32,7 @@ const RECYCLE_BIN_DATA: RecycleItem[] = [
 // BlueScreen 
 function BlueScreen() {
   return (
-    <div className="fixed inset-0 z-999 bg-[#0078d7] text-white p-10 md:p-20 flex flex-col font-sans select-none overflow-hidden">
+    <div className="fixed inset-0 z-999 bg-[#0078d7] text-white p-10 md:p-20 flex flex-col font-sans select-none! overflow-hidden">
       <div className="text-[120px] mb-10">:(</div>
       <h1 className="text-2xl md:text-4xl mb-8 leading-tight max-w-3xl">
         Your PC ran into a problem and needs to restart. We&apos;re just collecting some error info, and then we&apos;ll restart for you.
@@ -74,11 +74,14 @@ const Hero = () => {
       <div className="relative pt-32 pb-20 md:pt-48 md:pb-32 px-6 overflow-hidden">
         
         {/* --- DESKTOP ICONS --- */}
-        <div className="max-w-7xl mx-auto relative">
-           {/* Portfolio Icon */}
+        <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: [0, 0, 0, 0.5, 1], y: [30, 0] }}
+              transition={{ duration: 1 }} className="max-w-7xl mx-auto relative">
+           {/* PC Portfolio Icon */}
           <Link
             href="/portfolio"
-            className="px-1 py-4 hidden md:flex absolute left-2 w-28 flex-col z-20 items-center hover:bg-white/10 text-white font-bold rounded-lg backdrop-blur-sm group"
+            className="px-1 py-4 hidden md:flex absolute left-25 -top-15 w-28 flex-col z-50 items-center hover:bg-white/10 text-white font-bold rounded-lg md:backdrop-blur-sm group"
           >
             <Computer size={48} className="text-slate-400 group-hover:text-blue-400 transition-colors" />
             <span className="text-[11px] mt-1 drop-shadow-md">Portfolio</span>
@@ -87,17 +90,17 @@ const Hero = () => {
           {/* Recycle bin Icon */}
           <div
             onClick={() => setIsRecycleBinOpen(true)}
-            className="px-1 py-4 absolute right-2 top-100 w-28 flex flex-col z-20 items-center cursor-pointer hover:bg-white/10 text-white font-bold rounded-lg backdrop-blur-sm group"
+            className="px-1 py-4 absolute right-25 top-105 w-28 hidden md:flex flex-col z-50 items-center cursor-pointer hover:bg-white/10 text-white font-bold rounded-lg backdrop-blur-sm group"
           >
-            <div className="relative hidden md:flex">
-              <Recycle size={48} className="text-slate-400 group-hover:text-slate-300" />
+            <div className="relative">
+              <Recycle size={48} className="text-slate-400  group-hover:text-blue-400" />
               {recycleFiles.length > 0 && (
                 <div className="absolute top-0 right-0 w-3 h-3 bg-blue-500 rounded-full border-2 border-slate-900" />
               )}
             </div>
             <span className="text-[11px] mt-1 drop-shadow-md">Recycle Bin</span>
           </div>
-        </div>
+        </motion.div>
 
         {/* --- RECYCLE BIN WINDOW --- */}
         {isRecycleBinOpen && !isCrashed && (
@@ -205,7 +208,7 @@ const Hero = () => {
           <div className="absolute bottom-[0%] right-[-5%] w-[40%] h-[40%] rounded-full bg-indigo-600/10 blur-[120px]" />
         </div>
 
-        <div className="max-w-7xl mx-auto relative z-10">
+        <div className="max-w-7xl mx-auto relative z-10 select-none">
           <div className="flex flex-col items-center text-center">
             <motion.div
               initial={{ opacity: 0, y: 20 }}

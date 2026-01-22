@@ -6,6 +6,7 @@ import { desc, eq } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
 import { buildTree } from "./tree-builder";
 
+
 import bcrypt from "bcrypt";
 
 type UpdateUserData = {
@@ -93,7 +94,7 @@ export async function createFileSystemItem(data: {
       href: data.href,
       parentId: data.parentId || null,
     });
-    revalidatePath("/"); 
+    revalidatePath("/admin/portfolio");
     return { success: true };
   } catch (error) {
     console.error(error);
@@ -101,5 +102,32 @@ export async function createFileSystemItem(data: {
   }
 }
   
+export async function updateFileSystemItem(data: {
+  id: string;
+  name?: string;
+  text?: string;
+  type?: "file" | "folder";
+  href?: string | null;
+  parentId?: string | null;
+}) {
+  try {
+    await db
+      .update(fileSystem)
+      .set({
+        name: data.name,
+        text: data.text,
+        type: data.type,
+        href: data.href ?? null,
+        parentId: data.parentId ?? null,
+      })
+      .where(eq(fileSystem.id, data.id));
+
+    revalidatePath("/admin/portfolio");
+    return { success: true };
+  } catch (error) {
+    console.error(error);
+    return { error: "Failed to update item" };
+  }
+}
 
 

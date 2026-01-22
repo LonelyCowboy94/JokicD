@@ -15,9 +15,9 @@ const sessionUser = session?.user.name;
 
       <main className="flex-1 flex flex-col min-w-0">
         
-        <header className="h-16 select-none bg-white border-b border-slate-200 flex items-center justify-between px-4 md:px-8 shadow-sm">
-          <h1 className="text-sm pl-6 lg:pl-0 font-medium text-slate-500">Admin Panel / <Breadcrumbs /></h1>
-          <h2>{sessionUser}</h2>
+        <header className="h-16 select-none bg-slate-500/80 border-b border-slate-200 flex items-center justify-between px-4 md:px-8 shadow-sm">
+          <h1 className="text-sm pl-6 lg:pl-0 font-medium text-slate-300">Admin Panel / <Breadcrumbs /></h1>
+          <h2 className="text-slate-300 font-bold text-shadow">{sessionUser}</h2>
         </header>
 
         <div className="p-4 md:p-8">
