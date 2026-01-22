@@ -247,10 +247,10 @@ const Hero = () => {
               transition={{ delay: 0.3 }}
               className="flex flex-col sm:flex-row gap-4"
             >
-              <button className="px-8 py-4 hover:cursor-pointer bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-2xl transition-all shadow-lg shadow-blue-600/25 flex items-center gap-2 group">
+              <Link href="/contact" className="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-bold px-6 py-3 rounded-xl flex items-center justify-center gap-2 transition-all shadow-lg shadow-indigo-600/20 disabled:opacity-50">
                 Start a Project
                 <ChevronRight className="group-hover:translate-x-1 transition-transform" size={20} />
-              </button>
+              </Link>
             </motion.div>
           </div>
         </div>
